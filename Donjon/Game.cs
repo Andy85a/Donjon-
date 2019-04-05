@@ -7,6 +7,7 @@ namespace Donjon
 
         private Map map;
         private Hero hero;
+        private Healer healer;
         
         public void Run()
         {
@@ -19,6 +20,9 @@ namespace Donjon
             map = new Map(width: 10, height: 10);
             Cell heroCell = map.GetCell(0, 0);
             hero = new Hero(heroCell);
+
+            Cell healCell = map.GetCell(7, 5);
+            healer = new Healer(healCell);
 
             map.Creatures.Add(hero);
         }
@@ -60,6 +64,8 @@ namespace Donjon
 
                     Console.ForegroundColor = drawable.Color;
                     Console.Write(" " + drawable.Symbol);
+                   // Console.Write(" " + drawable.Symbol2);
+
                 }
                 Console.WriteLine();
             }
