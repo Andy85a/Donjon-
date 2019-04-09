@@ -6,7 +6,7 @@
 
         public Hero(Cell cell) : base(cell)
         {
-            
+            Symbol = "CR7";
         }
     }
 }

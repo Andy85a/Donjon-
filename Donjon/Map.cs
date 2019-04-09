@@ -16,21 +16,34 @@ namespace Donjon
 
         public Map(int width, int height)
         {
-            this.Width = width;
-            this.Height = height;
+            Width = width;
+            Height = height;
 
             cells = new Cell[width, height];
             for (int x = 0; x < width; x++)
             {
                 for (int y = 0; y < height; y++)
                 {
-                    cells[x, y] = new Cell();
+                    cells[x, y] = new Cell(new Position(x,y), this);
                 }
             }
         }
 
+        internal Creature GetCreatureAt(Cell cell)
+        {
+            foreach (var creature in Creatures)
+            {
+                if (creature.Cell == cell) return creature;
+                
+            }
+            return null;
+        }
+
+        internal Cell GetCell(Position position) => GetCell(position.X, position.Y);
+
         internal Cell GetCell(int x, int y)
         {
+            if (x < 0 || x >= Width || y < 0 || y >= Height) return null;
             return cells[x, y];
         }
     }
