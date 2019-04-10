@@ -15,15 +15,13 @@ namespace Donjon
             Y = y;
         }
 
-        public static Position operator +(Position p1, Position p2)
-        {
-            return new Position(p1.X + p2.X, p1.Y + p2.Y);
-        }
+        public static Position operator +(Position p1, Position p2)=>
+         new Position(p1.X + p2.X, p1.Y + p2.Y);
+        
 
-        public static Position operator-(Position p)
-        {
-            return new Position(-p.X, -p.Y);
-        }
+        public static Position operator-(Position p)=>
+            new Position(-p.X, -p.Y);
+        
 
         public static Position operator -(Position p1, Position p2)=>
         

@@ -20,7 +20,7 @@ namespace Donjon
         }
         public static void SetColor(ConsoleColor color)
         {
-            Console.ForegroundColor = ConsoleColor.White;
+            Console.ForegroundColor = color;
         }
         public static void Draw(Map map)
         {

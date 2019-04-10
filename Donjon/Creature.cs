@@ -2,9 +2,9 @@
 
 namespace Donjon
 {
-    internal abstract class Creature : IDrawable
+    internal class Creature : IDrawable
     {
-        public string Symbol{get => symbol; set => Symbol => value;
+        public string Symbol { get; set; } = "C";
         //public string Symbol2 => "He";
         
 
