@@ -9,7 +9,7 @@ namespace Donjon
             var game = new Game();
             game.Run();
 
-            Console.WriteLine("Thanks for playing");
+            Console.WriteLine("Thanks for playing dude");
             Console.ReadKey();
         }
     }

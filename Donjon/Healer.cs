@@ -1,4 +1,7 @@
-﻿namespace Donjon
+﻿using Donjon.Entities;
+using Donjon.World;
+
+namespace Donjon
 {
     internal class Healer : Creature
     {

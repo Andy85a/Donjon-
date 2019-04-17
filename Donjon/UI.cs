@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Donjon.World;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -8,9 +9,9 @@ namespace Donjon
     {
         public static void Clear()
         {
-            //Console.Clear();
+            Console.CursorVisible = false;
+            Console.Clear();
             Console.SetCursorPosition(0, 0);
-            Console.CursorVisible =false;
         }
 
         public static ConsoleKey GetKey()
@@ -31,8 +32,8 @@ namespace Donjon
                     Cell cell = map.GetCell(x, y);
 
 
-                    IDrawable drawable = cell.Creature ?? (IDrawable)cell; 
-                 
+                    IDrawable drawable = cell.Creature ?? cell.Items.FirstOrDefault() ?? (IDrawable)cell;
+
                     Console.ForegroundColor = drawable.Color;
                     Console.Write(" " + drawable.Symbol);
                     // Console.Write(" " + drawable.Symbol2);

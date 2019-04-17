@@ -1,7 +1,10 @@
-﻿using System;
+﻿using Donjon.Entities;
+using Donjon.Utilities;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 
-namespace Donjon
+namespace Donjon.World
 {
     internal class Map
     {
@@ -11,6 +14,12 @@ namespace Donjon
         private readonly Cell[,] cells;
 
         public List<Creature> Creatures { get; } = new List<Creature>();
+
+        public List<Cell> CellsWithCreature =>
+            cells
+            .Cast<Cell>()
+            .Where(c => c.Creature != null)
+            .ToList();
 
         //int[] ints = new int[5];
 
@@ -24,22 +33,16 @@ namespace Donjon
             {
                 for (int y = 0; y < height; y++)
                 {
-                    cells[x, y] = new Cell(new Position(x,y), this);
+                    cells[x, y] = new Cell(new Position(x, y), this);
                 }
             }
         }
 
-        internal Creature GetCreatureAt(Cell cell)
-        {
-            foreach (var creature in Creatures)
-            {
-                if (creature.Cell == cell) return creature;
-                
-            }
-            return null;
-        }
+        internal Creature GetCreatureAt(Cell cell) =>
+            Creatures.SingleOrDefault(c => c.Cell == cell);// linq användning
 
-        internal Cell GetCell(Position position) => GetCell(position.X, position.Y);
+        internal Cell GetCell(Position position) =>
+            GetCell(position.X, position.Y);
 
         internal Cell GetCell(int x, int y)
         {
